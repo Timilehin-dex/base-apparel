@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="output.css" />
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="font-[Josefin_Sans]">
+    <main>
+      <section
+        class="flex flex-col lg:flex-row bg-linear-[135deg] from-[hsl(0,0%,100%)] to-[hsl(0,100%,98%)]"
+      >
+        <div class="m-8 lg:hidden">
+          <img class="w-[110px] md:w-fit" src="images/logo.svg" alt="" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <img class="hidden lg:block" src="images/hero-desktop.jpg" alt="" />
+          <img class="lg:hidden w-full" src="images/hero-mobile.jpg" alt="" />
+        </div>
+        <!--  -->
+        <div class="order-2 lg:order-1 lg:relative">
+          <div>
+            <img
+              class="hidden lg:block"
+              src="images/bg-pattern-desktop.svg"
+              alt=""
+            />
+          </div>
+          <div class="lg:absolute z-10 inset-0">
+            <div class="max-w-md mx-auto my-14">
+              <div class="hidden lg:block">
+                <img src="images/logo.svg" alt="" />
+              </div>
+              <div
+                class="lg:mt-20 xl:mt-34 space-y-5 text-center lg:text-start"
+              >
+                <h1
+                  class="text-5xl lg:text-6xl xl:text-7xl uppercase text-[hsl(0,6%,24%)] tracking-[0.3em] font-semibold"
+                >
+                  <span class="font-light text-[hsl(0,36%,70%)]">We're</span>
+                  coming soon
+                </h1>
+                <p class="text-[hsl(0,36%,70%)] px-2 lg:px-0">
+                  Hello fellow shoppers! We're currently building our new
+                  fashion store. Add your email below to stay up-to-date with
+                  announcements and our launch deals.
+                </p>
+              </div>
+              <!--  -->
+              <form
+                id="contactForm"
+                class="mt-10 mx-5 lg:mx-0"
+                action=""
+                novalidate
+              >
+                <label for="email" class="relative">
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    class="border-2 w-full px-5 py-3 border-[hsl(0,36%,70%)]/20 rounded-full placeholder:text-[hsl(0,36%,70%)]/20 focus:outline-none focus:border-2 focus:border-[hsl(0,93%,68%)]"
+                    required
+                    placeholder=" Email Address"
+                  />
+                  <div
+                    class="absolute -right-px top-1/2 -translate-y-1/2 flex justify-center items-center gap-3"
+                  >
+                    <div id="errorIcon" class="hidden">
+                      <div class="flex items-center">
+                        <img src="images/icon-error.svg" alt="" />
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      class="w-18 md:w-24 h-13 bg-linear-[135deg] from-[hsl(0,80%,86%)] to-[hsl(0,74%,74%)] hover:to-[hsl(0,80%,86%)] hover:shadow-[0_12px_20px_2px_hsl(0,80%,86%,0.5)] transition rounded-full flex justify-center items-center shadow-2xl cursor-pointer"
+                    >
+                      <img src="images/icon-arrow.svg" alt="" />
+                    </button>
+                  </div>
+                </label>
+                <p
+                  id="emailError"
+                  class="px-5 text-[hsl(0,93%,68%)] text-sm hidden mt-2"
+                >
+                  Please provide a valid email
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <p class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <a href="#">Olusoyemi Oluwatimlehin</a>.
+        </p>
+      </footer>
+    </main>
+    <script>
+      const form = document.getElementById("contactForm");
+      let firstSubmitAttempt = false;
+
+      form.addEventListener("submit", function (e) {
+        firstSubmitAttempt = true; // user has tried submitting
+
+        validateForm(); // run validation
+
+        // If everything is valid, you can finally submit here:
+        if (!form.checkValidity()) {
+          e.preventDefault(); // stop form from submitting
+        }
+      });
+
+      // Validate all fields
+      function validateForm() {
+        validateEmail();
+      }
+
+      // Email validation
+      function validateEmail() {
+        const input = document.getElementById("email");
+        const error = document.getElementById("emailError");
+        const icon = document.getElementById("errorIcon");
+
+        if (!firstSubmitAttempt) return;
+
+        if (!input.validity.valid) {
+          error.classList.remove("hidden");
+          icon.classList.remove("hidden");
+        } else {
+          error.classList.add("hidden");
+          icon.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
